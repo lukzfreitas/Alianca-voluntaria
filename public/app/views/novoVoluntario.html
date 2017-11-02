@@ -1,0 +1,276 @@
+<div class="bs-docs-section" ng-controller="voluntariosController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1 id="forms">Novo voluntário</h1>
+            </div>
+        </div>
+    </div>
+    <md-content layout-padding>
+        <form name="cadastroVoluntario">
+            <!-- Nome do voluntário -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Nome</label>
+                        <input required ng-model="voluntario.nome">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- CPF -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>CPF</label>
+                        <input ui-mask="999.999.999-99" required ng-model="voluntario.cpf">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Data de Nascimento -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <md-datepicker aria-required="true" required ng-model="voluntario.dataNasc" md-placeholder="Data de Nasc *">
+                        </md-datepicker>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>E-mail</label>
+                        <input required ng-model="voluntario.email" type="email">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Senha -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Senha</label>
+                        <input ng-maxlength="30" ng-minlength="6" required name="password" ng-model="voluntario.senha" type="password">
+                        <div ng-messages="cadastroVoluntario.password.$error">
+                            <div ng-message="required">Senha obrigatória.</div>
+                            <div ng-message="maxlength">A senha deve ter menos que 30 caracteres.</div>
+                            <div ng-message="minlength">A senha deve ter mais que 4 caracteres.</div>                            
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Confirmar Senha -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Confirmar Senha</label>
+                        <input ng-maxlength="30" ng-minlength="6" required name="passwordConf" ng-model="voluntario.confSenha" type="password">
+                        <div ng-messages="cadastroVoluntario.passwordConf.$error">
+                            <div ng-message="required">Senha obrigatória.</div>
+                            <div ng-message="maxlength">A senha deve ter menos que 30 caracteres.</div>
+                            <div ng-message="minlength">A senha deve ter mais que 4 caracteres.</div>
+                            <div ng-show="voluntario.senha != voluntario.confSenha">senhas não conferem</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Escolaridade -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Escolaridade</label>
+                        <md-select aria-required="true" required ng-model="voluntario.escolaridade">
+                            <md-option ng-repeat="escolaridade in escolaridades" value="{{escolaridade}}">
+                                {{escolaridade}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Situação Prossional -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Situação Profissional</label>
+                        <md-select aria-required="true" required ng-model="voluntario.situacaoProfissional">
+                            <md-option ng-repeat="situacaoProfissional in situacoesProfissionais" value="{{situacaoProfissional}}">
+                                {{situacaoProfissional}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Profissao -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Profissão</label>
+                        <input ng-model="voluntario.profissao">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Empresa -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Empresa</label>
+                        <input ng-model="voluntario.empresa">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Disponibilidade -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Disponibilidade</label>
+                        <md-select aria-required="true" required ng-model="voluntario.disponibilidade">
+                            <md-option ng-repeat="disponibilidade in disponibilidades" value="{{disponibilidade}}">
+                                {{disponibilidade}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Logradouro -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Logradouro</label>
+                        <input required ng-model="voluntario.logradouro">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Numero -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Número</label>
+                        <input required ng-model="voluntario.numero">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Complemento -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Complemento</label>
+                        <input ng-model="voluntario.complemento">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Cep -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>CEP</label>
+                        <input ui-mask="99.999-999" required ng-model="voluntario.cep">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Bairro -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Bairro</label>
+                        <input required ng-model="voluntario.bairro">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- cidade -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Cidade</label>
+                        <input required ng-model="voluntario.cidade">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Estados -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>Estado</label>
+                        <md-select aria-required="true" required ng-model="voluntario.estado">
+                            <md-option ng-repeat="estado in estados" value="{{estado}}">
+                                {{estado}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- País -->
+            <div class="col-md-4 col-xs-12">
+                <div layout-gt-xs="row">
+                    <md-input-container flex-gt-xs>
+                        <label>País</label>
+                        <input required ng-model="voluntario.pais">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="row col-md-12">
+                <!-- Telefone -->
+                <div class="col-md-6 col-xs-12">
+                    <div layout-gt-xs="row">
+                        <md-chips flex-gt-xs ng-model="voluntario.contatos.telefones" name="telefone" readonly="voluntario.readonly" md-removable="voluntario.removable"
+                            placeholder="Telefones">
+                            <md-chip-template>
+                                <strong>{{$chip}}</strong>
+                            </md-chip-template>
+                        </md-chips>
+                    </div>
+                </div>
+
+                <!-- Rede Social -->
+                <div class="col-md-6 col-xs-12">
+                    <div layout-gt-xs="row">
+                        <md-chips flex-gt-xs ng-model="voluntario.contatos.redes_sociais" name="redeSocial" readonly="voluntario.readonly" md-removable="voluntario.removable"
+                            placeholder="Redes sociais">
+                            <md-chip-template>
+                                <strong>{{$chip}}</strong>
+                            </md-chip-template>
+                        </md-chips>
+                    </div>
+                </div>
+            </div>
+
+            <!-- nova area de interesse -->
+           <div class="row col-md-12">
+                <div class="col-md-12 col-xs-12 ">
+                    <div layout-gt-xs="row">
+                        <md-chips flex-gt-xs ng-model="voluntario.areas_interesse" name="areaInteresse" readonly="voluntario.readonly" md-removable="voluntario.removable"
+                            placeholder="Àreas de interesse">
+                            <md-chip-template>
+                                <strong>{{$chip}}</strong>
+                            </md-chip-template>
+                        </md-chips>
+                    </div>
+                </div>
+            </div>
+
+            <md-input-container flex-gt-xs>
+                <md-button type="submit" ng-click="criarVoluntario()" class="md-primary md-raised">Confirmar</md-button>
+                <md-button class="md-raised md-warn">Cancelar</md-button>
+            </md-input-container>
+        </form>
+        <p style='font-weight:bold;'>* Campos Obrigatórios.</p>
+    </md-content>
+</div>
+</div>

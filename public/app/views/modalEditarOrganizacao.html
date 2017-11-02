@@ -1,0 +1,241 @@
+<md-dialog aria-label="editarOrganizacao">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Editar Organizacao</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <img src="images/close.png" height="25" width="25" aria-label="Close dialog">
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-content layout-padding>
+                <form name="cadastroOrganizacao">
+
+                    <!-- Nome organizacao -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Nome da Organização</label>
+                                <input required ng-model="organizacao.nome_organizacao">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- CNPJ -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>CNPJ</label>
+                                <input ui-mask="99.999.999/9999-99" required ng-model="organizacao.cnpj">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Nome responsavel -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Nome do Responsável</label>
+                                <input required ng-model="organizacao.nome_responsavel">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>E-mail</label>
+                                <input required ng-model="organizacao.email" type="email">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Senha -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Senha</label>
+                                <input ng-maxlength="30" ng-minlength="6" required name="password" ng-model="organizacao.senha" type="password">
+                                <div ng-messages="cadastroOrganizacao.password.$error">
+                                    <div ng-message="required">Senha obrigatória.</div>
+                                    <div ng-message="maxlength">A senha deve ter menos que 30 caracteres.</div>
+                                    <div ng-message="minlength">A senha deve ter mais que 4 caracteres.</div>
+                                    <div ng-message="error">{{error}}</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Confirmar Senha -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Confirmar Senha</label>
+                                <input ng-maxlength="30" ng-minlength="6" required name="passwordConf" ng-model="organizacao.confSenha" type="password">
+                                <div ng-messages="cadastroOrganizacao.passwordConf.$error">
+                                    <div ng-message="required">Senha obrigatória.</div>
+                                    <div ng-message="maxlength">A senha deve ter menos que 30 caracteres.</div>
+                                    <div ng-message="minlength">A senha deve ter mais que 4 caracteres.</div>
+                                    <div ng-show="organizacao.senha != organizacao.confSenha">senhas não conferem</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Site -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Site</label>
+                                <input ng-model="organizacao.website">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Logradouro -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Logradouro</label>
+                                <input required ng-model="organizacao.logradouro">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Numero -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Número</label>
+                                <input required ng-model="organizacao.numero">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Complemento -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Complemento</label>
+                                <input ng-model="organizacao.complemento">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Cep -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>CEP</label>
+                                <input ui-mask="99.999-999" required ng-model="organizacao.cep">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Bairro -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Bairro</label>
+                                <input required ng-model="organizacao.bairro">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- cidade -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Cidade</label>
+                                <input required ng-model="organizacao.cidade">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Estados -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Estado</label>
+                                <md-select aria-required="true" required ng-model="organizacao.estado">
+                                    <md-option ng-repeat="estado in estados" value="{{estado}}">
+                                        {{estado}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- País -->
+                    <div class="col-md-4 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>País</label>
+                                <input required ng-model="organizacao.pais">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Missão -->
+                    <div class="col-md-12 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Missão</label>
+                                <input ng-model="organizacao.missao">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Telefone -->
+                    <div class="col-md-6 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-chips flex-gt-xs ng-model="organizacao.contatos.telefones" name="telefone" readonly="organizacao.readonly" md-removable="organizacao.removable"
+                                placeholder="Insira telefones">
+                                <md-chip-template>
+                                    <strong>{{$chip}}</strong>
+                                </md-chip-template>
+                            </md-chips>
+                        </div>
+                    </div>
+
+                    <!-- Rede Social -->
+                    <div class="col-md-6 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-chips flex-gt-xs ng-model="organizacao.contatos.redes_sociais" name="redeSocial" readonly="organizacao.readonly" md-removable="organizacao.removable"
+                                placeholder="Insira redes sociais">
+                                <md-chip-template>
+                                    <strong>{{$chip}}</strong>
+                                </md-chip-template>
+                            </md-chips>
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-12 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-chips flex-gt-xs ng-model="organizacao.areas_interesse" name="areaInteresse" readonly="organizacao.readonly" md-removable="organizacao.removable"
+                                    placeholder="Insira áreas de interesse">
+                                    <md-chip-template>
+                                        <strong>{{$chip}}</strong>
+                                    </md-chip-template>
+                                </md-chips>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <p style='font-weight:bold;'>* Campos Obrigatórios.</p>
+            </md-content>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised md-warn" ng-click="cancel()">
+            Cancelar
+        </md-button>
+        <md-button type="submit" class="md-primary md-raised" ng-click="atualizar()" style="margin-right:20px;">
+            Salvar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

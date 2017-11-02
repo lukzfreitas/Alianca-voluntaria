@@ -1,0 +1,103 @@
+<md-dialog aria-label="editarOportunidade">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Editar Oportunidade</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <img src="images/close.png" height="25" width="25" aria-label="Close dialog">
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-content layout-padding>
+                <form name="editarOportunidade">
+                    <div class="row col-md-12">
+                        <!-- Codigo deve ser um auto incremente -->
+                        <div class="col-md-4 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-input-container flex-gt-xs>
+                                    <label>Código</label>
+                                    <input ng-disabled="true" ng-model="oportunidade.codigo">
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <!-- Responsável -->
+                        <div class="col-md-4 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-input-container flex-gt-xs>
+                                    <label>Responsável</label>
+                                    <input required ng-model="oportunidade.responsavel">
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <!-- selected organizacoes -->
+                        <div class="col-md-4 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-input-container flex-gt-xs>
+                                    <label>Informe o CNPJ de sua organização</label>
+                                    <input ui-mask="99.999.999/9999-99" required ng-model="oportunidade.organizacao_id.cnpj">
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row col-md-12">
+                        <!-- Descrição -->
+                        <div class="col-md-8 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-input-container flex-gt-xs>
+                                    <label>Descrição</label>
+                                    <input ng-model="oportunidade.descricao">
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <!-- Data Inicio -->
+                        <div class="col-md-2 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-input-container flex-gt-xs>
+                                    <md-datepicker aria-required="true" required ng-model="oportunidade.dataInicio" md-placeholder="Data Inicio *">
+                                    </md-datepicker>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <!-- Data Fim -->
+                        <div class="col-md-2 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-input-container flex-gt-xs>
+                                    <md-datepicker aria-required="true" required ng-model="oportunidade.dataFim" md-placeholder="Data Fim *">
+                                    </md-datepicker>
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- nova area de interesse -->
+                    <div class="row col-md-12">
+                        <div class="col-md-12 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-chips flex-gt-xs ng-model="oportunidade.areas_interesse" name="areaInteresse" readonly="oportunidade.readonly" md-removable="oportunidade.removable"
+                                    placeholder="Insira áreas de interesse">
+                                    <md-chip-template>
+                                        <strong>{{$chip}}</strong>
+                                    </md-chip-template>
+                                </md-chips>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <p style='font-weight:bold;'>* Campos Obrigatórios.</p>
+            </md-content>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised md-warn" ng-click="cancel()">
+            Cancelar
+        </md-button>
+        <md-button type="submit" class="md-primary md-raised" ng-click="atualizar()" style="margin-right:20px;">
+            Salvar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

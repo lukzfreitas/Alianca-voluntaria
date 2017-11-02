@@ -1,0 +1,1931 @@
+{
+	"info": {
+		"name": "Aliança Voluntária",
+		"_postman_id": "3b7e3d90-c673-04f3-7b68-ada74f66577d",
+		"description": "Testes para as rotas do sistema Aliança Voluntaria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Alvos Interesse",
+			"description": "",
+			"item": [
+				{
+					"name": "Exceção",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sucesso",
+					"description": "",
+					"item": [
+						{
+							"name": "Novo alvo interesse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"descricao chave is equals\"] = jsonData.descricao_chave === \"idosssos\";",
+											"tests[\"descricao is equals\"] = jsonData.descricao === \"Idosssos\";",
+											"postman.setGlobalVariable(\"alvo_interesse_id\", jsonData._id);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\" : \"Idosssos\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}alvos-interesse",
+									"host": [
+										"{{url}}alvos-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Alterar alvo interesse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 205\"] = responseCode.code === 205;",
+											"tests[\"mensagem\"] = jsonData.mensagem === \"Descrição alterada com sucesso\";"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\" : \"Idosos\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}alvos-interesse/{{alvo_interesse_id}}",
+									"host": [
+										"{{url}}alvos-interesse"
+									],
+									"path": [
+										"{{alvo_interesse_id}}"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Busca por um alvo interesse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"descricao chave is equals\"] = jsonData.descricao_chave === \"idosos\";",
+											"tests[\"descricao is equals\"] = jsonData.descricao === \"Idosos\";"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}alvos-interesse/{{alvo_interesse_id}}",
+									"host": [
+										"{{url}}alvos-interesse"
+									],
+									"path": [
+										"{{alvo_interesse_id}}"
+									]
+								},
+								"description": "Retorna apenas uma descrição de alvo interesse"
+							},
+							"response": []
+						},
+						{
+							"name": "Remover alvo interesse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}alvos-interesse/{{alvo_interesse_id}}",
+									"host": [
+										"{{url}}alvos-interesse"
+									],
+									"path": [
+										"{{alvo_interesse_id}}"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Novo alvo interesse copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"descricao chave is equals\"] = jsonData.descricao_chave === \"idosos\";",
+											"tests[\"descricao is equals\"] = jsonData.descricao === \"Idosos\";",
+											"postman.setGlobalVariable(\"alvo_interesse_id\", jsonData._id);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\" : \"Idosos\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}alvos-interesse",
+									"host": [
+										"{{url}}alvos-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Areas Interesse",
+			"description": "",
+			"item": [
+				{
+					"name": "Exceção",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sucesso",
+					"description": "",
+					"item": [
+						{
+							"name": "Nova area interesse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"descricao chave is equals\"] = jsonData.descricao_chave === \"educacao\";",
+											"tests[\"descricao is equals\"] = jsonData.descricao === \"Educacao\";",
+											"postman.setGlobalVariable(\"area_interesse_id\", jsonData._id);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\" : \"Educacao\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}areas-interesse",
+									"host": [
+										"{{url}}areas-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Alterar alvo interesse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 205\"] = responseCode.code === 205;",
+											"tests[\"mensagem\"] = jsonData.mensagem === \"Descrição alterada com sucesso\";"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\" : \"Educação\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}areas-interesse/{{area_interesse_id}}",
+									"host": [
+										"{{url}}areas-interesse"
+									],
+									"path": [
+										"{{area_interesse_id}}"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Busca por uma area interesse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"descricao chave is equals\"] = jsonData.descricao_chave === \"educação\";",
+											"tests[\"descricao is equals\"] = jsonData.descricao === \"Educação\";"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}areas-interesse/{{area_interesse_id}}",
+									"host": [
+										"{{url}}areas-interesse"
+									],
+									"path": [
+										"{{area_interesse_id}}"
+									]
+								},
+								"description": "Retorna apenas uma descrição de area interesse"
+							},
+							"response": []
+						},
+						{
+							"name": "Remover area interesse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}areas-interesse/{{area_interesse_id}}",
+									"host": [
+										"{{url}}areas-interesse"
+									],
+									"path": [
+										"{{area_interesse_id}}"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Nova area interesse copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"descricao chave is equals\"] = jsonData.descricao_chave === \"educação\";",
+											"tests[\"descricao is equals\"] = jsonData.descricao === \"Educação\";",
+											"postman.setGlobalVariable(\"area_interesse_id\", jsonData._id);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\" : \"Educação\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}areas-interesse",
+									"host": [
+										"{{url}}areas-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Organizações",
+			"description": "Testes de rotas das organizações",
+			"item": [
+				{
+					"name": "Exceções",
+					"description": "Rotas para retornar exceções",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sucesso",
+					"description": "Rotas que retornam status de sucesso",
+					"item": [
+						{
+							"name": "Nova organização",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"cnpj is equals\"] = jsonData.cnpj === 20953962000172;",
+											"tests[\"email is equals\"] = jsonData.email === \"contato@parceirosvoluntaios.com\";",
+											"tests[\"nome organizacao is equals\"] = jsonData.nome_organizacao === \"Parceiros Voluntários\";",
+											"postman.setGlobalVariable(\"organizacao_id\", jsonData._id);",
+											"postman.setGlobalVariable(\"cnpj\", jsonData.cnpj);",
+											"postman.setGlobalVariable(\"email_organizacao\", jsonData.email);",
+											"postman.setGlobalVariable(\"nome_organizacao\", jsonData.nome_organizacao);",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"cnpj\": \"20953962000172\",\n    \"nome_organizacao\" : \"Parceiros Voluntários\",\n    \"email\": \"contato@parceirosvoluntaios.com\", \n    \"senha\": \"zaqwsx\",\n    \"missao\": \"Qualificar pessoas e instituições, por intermédio de tecnologias sociais e do voluntariado, visando comunidades proativas e solidárias.\",    \n    \"nome_responsavel\": \"Maria\",\n    \"website\": \"http://www.parceirosvoluntarios.org.br/\",\n    \"cep\": \"90030-10\",\n    \"logradouro\": \"Largo Visconde do Cairu\",\n    \"numero\": 17,\n    \"complemento\": \"8 andar\",\n    \"bairro\": \"Centro Histórico\",\n    \"cidade\": \"Porto Alegre\",\n    \"estado\": \"RS\",\n    \"pais\": \"Brasil\",\n\t    \"contatos\": {\n\t    \t\"telefones\": [\"+55 (51) 2101.9750\"],\n\t    \"redes_sociais\": [\n\t    \t\"https://www.facebook.com/parceirosvoluntarios\",\n\t    \t\"https://twitter.com/pvoluntarios/\",\n\t    \t\"https://www.linkedin.com/company/1252299/\",\n\t    \t\"https://www.youtube.com/user/ParceirosVoluntarios\"\n\t    ]\t\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}organizacoes",
+									"host": [
+										"{{url}}organizacoes"
+									]
+								},
+								"description": "Rota para criar uma nova organização"
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar area interesse em organização",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"area_interesse_id\" : \"{{area_interesse_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}organizacoes/{{organizacao_id}}/adicionar-area-interesse",
+									"host": [
+										"{{url}}organizacoes"
+									],
+									"path": [
+										"{{organizacao_id}}",
+										"adicionar-area-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar alvo interesse em organização",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"alvo_interesse_id\" : \"{{alvo_interesse_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}organizacoes/{{organizacao_id}}/adicionar-alvo-interesse",
+									"host": [
+										"{{url}}organizacoes"
+									],
+									"path": [
+										"{{organizacao_id}}",
+										"adicionar-alvo-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Todas organizações",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}organizacoes",
+									"host": [
+										"{{url}}organizacoes"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Busca uma organização",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"cnpj is equals\"] = jsonData.cnpj === 20953962000172;",
+											"tests[\"email is equals\"] = jsonData.email === \"contato@parceirosvoluntaios.com\";",
+											"tests[\"nome organizacao is equals\"] = jsonData.nome_organizacao === \"Parceiros Voluntários\";"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}organizacoes/{{organizacao_id}}",
+									"host": [
+										"{{url}}organizacoes"
+									],
+									"path": [
+										"{{organizacao_id}}"
+									]
+								},
+								"description": "Retorna uma organização passando um email por parametro"
+							},
+							"response": []
+						},
+						{
+							"name": "Alterar organização",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 205\"] = responseCode.code === 205;",
+											"tests[\"mensagem\"] = jsonData.mensagem === \"Organização alterada com sucesso\";",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"cnpj\": \"20953962000172\",\n    \"nome_organizacao\" : \"Parceiros Voluntários\",\n    \"email\": \"contato@parceirosvoluntaios.com\", \n    \"senha\": \"zaqwsx\",\n    \"missao\": \"Qualificar pessoas e instituições, por intermédio de tecnologias sociais e do voluntariado, visando comunidades proativas e solidárias.\",    \n    \"nome_responsavel\": \"Maria da Silva\",\n    \"website\": \"http://www.parceirosvoluntarios.org.br/\",\n    \"cep\": \"90030-10\",\n    \"logradouro\": \"Largo Visconde do Cairu\",\n    \"numero\": 17,\n    \"complemento\": \"8 andar\",\n    \"bairro\": \"Centro Histórico\",\n    \"cidade\": \"Porto Alegre\",\n    \"estado\": \"RS\",\n    \"pais\": \"Brasil\",\n\t    \"contatos\": {\n\t    \t\"telefones\": [\"+55 (51) 2101.9750\"],\n\t    \"redes_sociais\": [\n\t    \t\"https://www.facebook.com/parceirosvoluntarios\",\n\t    \t\"https://twitter.com/pvoluntarios/\",\n\t    \t\"https://www.linkedin.com/company/1252299/\",\n\t    \t\"https://www.youtube.com/user/ParceirosVoluntarios\"\n\t    ]\t\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}organizacoes/{{organizacao_id}}",
+									"host": [
+										"{{url}}organizacoes"
+									],
+									"path": [
+										"{{organizacao_id}}"
+									]
+								},
+								"description": "Altero o nome do responsavel da organização"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Oportunidades",
+			"description": "",
+			"item": [
+				{
+					"name": "Exceções",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sucesso",
+					"description": "",
+					"item": [
+						{
+							"name": "Todas oportunidades",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}oportunidades",
+									"host": [
+										"{{url}}oportunidades"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Nova oportunidade",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"postman.setGlobalVariable(\"oportunidade_id\", jsonData._id);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"codigo\": \"001\",\n    \"disponivel\": true,\n    \"descricao\": \"Recolhimento de Alimentos 27, 28 e 29 de outubro - Precisamos da sua ajuda!\",\n    \"responsavel\": \"João\",\n    \"nota\": 0,\n    \"comentario\": \"\",\n    \"organizacao_id\": \"{{organizacao_id}}\",\n    \"__v\": 0,\n    \"fotos\": [],\n    \"dataInicio\": \"2017-10-08T02:00:00.000Z\",\n    \"dataFim\": \"2017-10-26T02:00:00.000Z\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}oportunidades",
+									"host": [
+										"{{url}}oportunidades"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar area interesse em oportunidade",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"area_interesse_id\" : \"{{area_interesse_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}oportunidades/{{oportunidade_id}}/adicionar-area-interesse",
+									"host": [
+										"{{url}}oportunidades"
+									],
+									"path": [
+										"{{oportunidade_id}}",
+										"adicionar-area-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar alvo interesse em oportunidade",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"alvo_interesse_id\" : \"{{alvo_interesse_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}oportunidades/{{oportunidade_id}}/adicionar-alvo-interesse",
+									"host": [
+										"{{url}}oportunidades"
+									],
+									"path": [
+										"{{oportunidade_id}}",
+										"adicionar-alvo-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Busca oportunidade",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}oportunidades/{{oportunidade_id}}",
+									"host": [
+										"{{url}}oportunidades"
+									],
+									"path": [
+										"{{oportunidade_id}}"
+									]
+								},
+								"description": "Retorna uma oportunidade "
+							},
+							"response": []
+						},
+						{
+							"name": "Alterar oportunidade",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 205\"] = responseCode.code === 205;",
+											"tests[\"mensagem\"] = jsonData.mensagem === \"Oportunidade alterada com sucesso\";"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"dataFim\": \"2017-10-25T02:00:00.000Z\"\n}\n"
+								},
+								"url": {
+									"raw": "{{url}}oportunidades/{{oportunidade_id}}",
+									"host": [
+										"{{url}}oportunidades"
+									],
+									"path": [
+										"{{oportunidade_id}}"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Voluntários",
+			"description": "Testes de rotas dos Voluntários",
+			"item": [
+				{
+					"name": "Exceções",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sucesso",
+					"description": "",
+					"item": [
+						{
+							"name": "Todos voluntários",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}voluntarios",
+									"host": [
+										"{{url}}voluntarios"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Novo voluntário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"cpf is equals\"] = jsonData.cpf === 23336246121;",
+											"tests[\"email is equals\"] = jsonData.email === \"joaquina@mail.com\";",
+											"tests[\"nome is equals\"] = jsonData.nome === \"Joaquina\";",
+											"postman.setGlobalVariable(\"voluntario_id\", jsonData._id);",
+											"postman.setGlobalVariable(\"cpf\", jsonData.cpf);",
+											"postman.setGlobalVariable(\"email_voluntario\", jsonData.email);",
+											"postman.setGlobalVariable(\"nome_voluntario\", jsonData.nome);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cpf\": \"233.362.461-21\",\n    \"email\": \"joaquina@mail.com\",\n    \"nome\": \"Joaquina\",\n    \"ja_foi_voluntario\": true,\n    \"escolaridade\": \"Ensino Médio\",\n    \"disponibilidade\": \"Integral\",\n    \"situacaoProfissional\": \"Estudante\",\n    \"profissao\": \"\",\n    \"empresa\": \"PUCRS\",\n    \"foto\": \"\",\n    \"cep\": \"90010-100\",\n    \"logradouro\": \"Rua Duque de Caxias\",\n    \"numero\": 1577,\n    \"complemento\": \"201\",\n    \"bairro\": \"Centro Histórico\",\n    \"cidade\": \"Porto Alegre\",\n    \"estado\": \"RS\",\n    \"pais\": \"Brasil\",\n    \"__v\": 0,\n    \"contatos\": {\n        \"redes_sociais\": [],\n        \"telefones\": [\n            \"(51) 89911-2233\",\n            \"(51) 3011-3322\"\n        ]\n    },\n    \"dataNasc\": \"1991-06-26T00:00:00.000Z\",\n    \"oportunidades\": []\n}\n"
+								},
+								"url": {
+									"raw": "{{url}}voluntarios",
+									"host": [
+										"{{url}}voluntarios"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar area interesse em voluntarios",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"area_interesse_id\" : \"{{area_interesse_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}voluntarios/{{voluntario_id}}/adicionar-area-interesse",
+									"host": [
+										"{{url}}voluntarios"
+									],
+									"path": [
+										"{{voluntario_id}}",
+										"adicionar-area-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar alvo interesse em voluntarios",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"alvo_interesse_id\" : \"{{alvo_interesse_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}voluntarios/{{voluntario_id}}/adicionar-alvo-interesse",
+									"host": [
+										"{{url}}voluntarios"
+									],
+									"path": [
+										"{{voluntario_id}}",
+										"adicionar-alvo-interesse"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Busca um voluntário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"tests[\"cpf is equals\"] = jsonData.cpf === 23336246121;",
+											"tests[\"email is equals\"] = jsonData.email === \"joaquina@mail.com\";",
+											"tests[\"nome is equals\"] = jsonData.nome === \"Joaquina\";"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}voluntarios/{{voluntario_id}}",
+									"host": [
+										"{{url}}voluntarios"
+									],
+									"path": [
+										"{{voluntario_id}}"
+									]
+								},
+								"description": "Retorna apenas um voluntário "
+							},
+							"response": []
+						},
+						{
+							"name": "Alterar voluntário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Status code is 205\"] = responseCode.code === 205;",
+											"tests[\"mensagem\"] = jsonData.mensagem === \"Voluntário alterado com sucesso\";"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Joaquina da Silva\"\n}\n"
+								},
+								"url": {
+									"raw": "{{url}}voluntarios/{{voluntario_id}}",
+									"host": [
+										"{{url}}voluntarios"
+									],
+									"path": [
+										"{{voluntario_id}}"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Relações",
+			"description": "",
+			"item": [
+				{
+					"name": "Voluntário candata-se a oportunidades",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 205\"] = responseCode.code === 205;",
+									"tests[\"mensagem\"] = jsonData.mensagem === \"Voluntário associado a oportunidade com sucesso\";",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oportunidade_id\" : \"{{oportunidade_id}}\"\n}\n"
+						},
+						"url": {
+							"raw": "{{url}}voluntarios/{{voluntario_id}}/candidatar-se-oportunidades",
+							"host": [
+								"{{url}}voluntarios"
+							],
+							"path": [
+								"{{voluntario_id}}",
+								"candidatar-se-oportunidades"
+							]
+						},
+						"description": "envia uma array de oportunidades via json"
+					},
+					"response": []
+				},
+				{
+					"name": "Oportunidade seleciona voluntarios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"mensagem\"] = jsonData.mensagem === \"Voluntários selecionado(s) a oportunidade com sucesso\";",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"voluntario_id\" : \"{{voluntario_id}}\"\n}\n"
+						},
+						"url": {
+							"raw": "{{url}}oportunidades/{{oportunidade_id}}/seleciona-voluntarios",
+							"host": [
+								"{{url}}oportunidades"
+							],
+							"path": [
+								"{{oportunidade_id}}",
+								"seleciona-voluntarios"
+							]
+						},
+						"description": "envia um voluntario para o array de voluntarios selecionados para a oportunidade"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca voluntarios interessados na oportunidade",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"cpf is equals\"] = jsonData[0].cpf === 23336246121;",
+									"tests[\"email is equals\"] = jsonData[0].email === \"joaquina@mail.com\";",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}oportunidades/{{oportunidade_id}}/voluntarios-interesse/",
+							"host": [
+								"{{url}}oportunidades"
+							],
+							"path": [
+								"{{oportunidade_id}}",
+								"voluntarios-interesse",
+								""
+							]
+						},
+						"description": "Busca por todos os voluntário que possuem interesse na oportunidade"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca oportunidades de interesse de um voluntario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"codigo is equals\"] = jsonData[0].codigo === \"001\";",
+									"",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}voluntarios/{{voluntario_id}}/oportunidades",
+							"host": [
+								"{{url}}voluntarios"
+							],
+							"path": [
+								"{{voluntario_id}}",
+								"oportunidades"
+							]
+						},
+						"description": "Busca por todas as oportunidades de interesse de um voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca alvos interesse da oportunidade",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"descricao chave is equals\"] = jsonData[0].descricao_chave === \"idosos\";",
+									"tests[\"descricao is equals\"] = jsonData[0].descricao === \"Idosos\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}oportunidades/{{oportunidade_id}}/alvos-interesse/",
+							"host": [
+								"{{url}}oportunidades"
+							],
+							"path": [
+								"{{oportunidade_id}}",
+								"alvos-interesse",
+								""
+							]
+						},
+						"description": "Busca alvos interesse da oportunidade"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca areas interesse da oportunidade",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"descricao chave is equals\"] = jsonData[0].descricao_chave === \"educação\";",
+									"tests[\"descricao is equals\"] = jsonData[0].descricao === \"Educação\";",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}oportunidades/{{oportunidade_id}}/areas-interesse",
+							"host": [
+								"{{url}}oportunidades"
+							],
+							"path": [
+								"{{oportunidade_id}}",
+								"areas-interesse"
+							]
+						},
+						"description": "Busca areas interesse da oportunidade"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca areas interesse do voluntario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"descricao chave is equals\"] = jsonData[0].descricao_chave === \"educação\";",
+									"tests[\"descricao is equals\"] = jsonData[0].descricao === \"Educação\";",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}voluntarios/{{voluntario_id}}/areas-interesse",
+							"host": [
+								"{{url}}voluntarios"
+							],
+							"path": [
+								"{{voluntario_id}}",
+								"areas-interesse"
+							]
+						},
+						"description": "Busca areas interesse do voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca alvos interesse do voluntario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"descricao chave is equals\"] = jsonData[0].descricao_chave === \"idosos\";",
+									"tests[\"descricao is equals\"] = jsonData[0].descricao === \"Idosos\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}voluntarios/{{voluntario_id}}/alvos-interesse",
+							"host": [
+								"{{url}}voluntarios"
+							],
+							"path": [
+								"{{voluntario_id}}",
+								"alvos-interesse"
+							]
+						},
+						"description": "Busca alvos interesse do voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca areas interesse do organização",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"descricao chave is equals\"] = jsonData[0].descricao_chave === \"educação\";",
+									"tests[\"descricao is equals\"] = jsonData[0].descricao === \"Educação\";",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}organizacoes/{{organizacao_id}}/areas-interesse",
+							"host": [
+								"{{url}}organizacoes"
+							],
+							"path": [
+								"{{organizacao_id}}",
+								"areas-interesse"
+							]
+						},
+						"description": "Busca areas interesse do organização"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca alvos interesse da organização",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"descricao chave is equals\"] = jsonData[0].descricao_chave === \"idosos\";",
+									"tests[\"descricao is equals\"] = jsonData[0].descricao === \"Idosos\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}organizacoes/{{organizacao_id}}/alvos-interesse",
+							"host": [
+								"{{url}}organizacoes"
+							],
+							"path": [
+								"{{organizacao_id}}",
+								"alvos-interesse"
+							]
+						},
+						"description": "Busca alvos interesse da organização"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca voluntarios de alvo de interesse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"descricao cpf is equals\"] = jsonData[0].cpf === 23336246121;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}alvos-interesse/{{alvo_interesse_id}}/voluntarios",
+							"host": [
+								"{{url}}alvos-interesse"
+							],
+							"path": [
+								"{{alvo_interesse_id}}",
+								"voluntarios"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Busca organizações de alvo de interesse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"cnpj is equals\"] = jsonData[0].cnpj === 20953962000172;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}alvos-interesse/{{alvo_interesse_id}}/organizacoes",
+							"host": [
+								"{{url}}alvos-interesse"
+							],
+							"path": [
+								"{{alvo_interesse_id}}",
+								"organizacoes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Busca oportunidades de alvo de interesse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"codigo is equals\"] = jsonData[0].codigo === \"001\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}alvos-interesse/{{alvo_interesse_id}}/oportunidades",
+							"host": [
+								"{{url}}alvos-interesse"
+							],
+							"path": [
+								"{{alvo_interesse_id}}",
+								"oportunidades"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Busca voluntarios de area de interesse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"descricao cpf is equals\"] = jsonData[0].cpf === 23336246121;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}areas-interesse/{{area_interesse_id}}/voluntarios",
+							"host": [
+								"{{url}}areas-interesse"
+							],
+							"path": [
+								"{{area_interesse_id}}",
+								"voluntarios"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Busca organizações de area de interesse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"cnpj is equals\"] = jsonData[0].cnpj === 20953962000172;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}areas-interesse/{{area_interesse_id}}/organizacoes",
+							"host": [
+								"{{url}}areas-interesse"
+							],
+							"path": [
+								"{{area_interesse_id}}",
+								"organizacoes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Busca oportunidades de area de interesse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"codigo is equals\"] = jsonData[0].codigo === \"001\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"1\",\n\t\"nome\" : \"Lucas\",\n\t\"idade\": \"26\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}areas-interesse/{{area_interesse_id}}/oportunidades",
+							"host": [
+								"{{url}}areas-interesse"
+							],
+							"path": [
+								"{{area_interesse_id}}",
+								"oportunidades"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

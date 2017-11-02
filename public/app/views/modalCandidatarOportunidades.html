@@ -1,0 +1,75 @@
+<md-dialog aria-label="candidataroportunidade">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 ng-if="oportunidades.length === 1">Canditar-se à oportunidade </h2>
+            <h2 ng-if="oportunidades.length > 1">Canditar-se à oportunidades </h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <img src="images/close.png" height="25" width="25" aria-label="Close dialog">
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <h3>Informe seu cpf e senha</h3>
+            <md-content layout-padding>
+                <form name="candidataroportunidade">
+                    <div class="row col-md-12">
+                        <!-- CPF -->
+                        <div class="col-md-6 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-input-container flex-gt-xs>
+                                    <label>CPF</label>
+                                    <input ui-mask="999.999.999-99" required ng-model="voluntario.cpf">
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <!-- Senha -->
+                        <div class="col-md-6 col-xs-12">
+                            <div layout-gt-xs="row">
+                                <md-input-container flex-gt-xs>
+                                    <label>Senha</label>
+                                    <input required ng-model="voluntario.senha" type="password">
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-striped table-hover ">                            
+                        <thead>
+                            <tr>                                
+                                <th>Código</th>
+                                <th>Descrição</th>
+                                <th>Responsável</th>
+                                <th>email</th>
+                                <th>remover</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="oportunidade in oportunidades track by $index">
+                                <td>{{oportunidade.codigo}}</td>
+                                <td>{{oportunidade.descricao}}</td>
+                                <td>{{oportunidade.responsavel}}</td>
+                                <td>{{oportunidade.organizacao_id.email}}</td>
+                                <td>
+                                    <md-button class="md-icon-button" ng-click="remover()">
+                                        <img src="images/close.png" height="10" width="10" aria-label="Close dialog">
+                                    </md-button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </md-content>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised md-warn" ng-click="cancel()">
+            Cancelar
+        </md-button>
+        <md-button type="submit" class="md-primary md-raised" ng-click="confirmar()" style="margin-right:20px;">
+            Confirmar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

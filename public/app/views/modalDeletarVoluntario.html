@@ -1,0 +1,46 @@
+<md-dialog aria-label="deletarVoluntario">
+    <md-toolbar>
+        <div class="md-toolbar-tools">            
+            <h2>Tem certeza que deseja deletar voluntário {{voluntario.nome}} </h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <img src="images/close.png" height="25" width="25" aria-label="Close dialog">
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-content layout-padding>
+                <form name="deletarVoluntario">
+                    <!-- Email -->
+                    <div class="col-md-6 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>E-mail</label>
+                                <input required ng-model="voluntario.confEmail" type="email">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <!-- Senha -->
+                    <div class="col-md-6 col-xs-12">
+                        <div layout-gt-xs="row">
+                            <md-input-container flex-gt-xs>
+                                <label>Senha</label>
+                                <input required ng-model="voluntario.confSenha" type="password">
+                            </md-input-container>
+                        </div>
+                    </div>
+                </form>
+            </md-content>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-primary md-raised" ng-click="cancel()">
+            Cancelar
+        </md-button>
+        <md-button type="submit" class="md-raised md-warn" ng-click="deletar()" style="margin-right:20px;">
+            deletar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
